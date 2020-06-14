@@ -304,24 +304,26 @@ func (f *fumpter) applyPre(c *astutil.Cursor) {
 		if spec.Type != nil {
 			break // e.g. var name Type
 		}
-		tok := token.ASSIGN
-		names := make([]ast.Expr, len(spec.Names))
-		for i, name := range spec.Names {
-			names[i] = name
-			if name.Name != "_" {
-				tok = token.DEFINE
-			}
-		}
-		c.Replace(&ast.AssignStmt{
-			Lhs: names,
-			Tok: tok,
-			Rhs: spec.Values,
-		})
+		// Don't rewrite var to :=
+		//tok := token.ASSIGN
+		//names := make([]ast.Expr, len(spec.Names))
+		//for i, name := range spec.Names {
+		//	names[i] = name
+		//	if name.Name != "_" {
+		//		tok = token.DEFINE
+		//	}
+		//}
+		//c.Replace(&ast.AssignStmt{
+		//	Lhs: names,
+		//	Tok: tok,
+		//	Rhs: spec.Values,
+		//})
 
 	case *ast.GenDecl:
-		if node.Tok == token.IMPORT && node.Lparen.IsValid() {
-			f.joinStdImports(node)
-		}
+		// Leave imports alone so that gofumports can work
+		//if node.Tok == token.IMPORT && node.Lparen.IsValid() {
+		//	f.joinStdImports(node)
+		//}
 
 		// Single var declarations shouldn't use parentheses, unless
 		// there's a comment on the grouped declaration.
