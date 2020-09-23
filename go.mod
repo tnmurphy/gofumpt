@@ -1,4 +1,4 @@
-module tnmurphy/gofumpt
+module github.com/tnmurphy/gofumpt
 
 go 1.14
 
