@@ -21,8 +21,8 @@ import (
 	"runtime/pprof"
 	"strings"
 
-	gformat "mvdan.cc/gofumpt/format"
-	"mvdan.cc/gofumpt/internal/diff"
+	gformat "tnmurphy/gofumpt/format"
+	"tnmurphy/gofumpt/internal/diff"
 )
 
 var (

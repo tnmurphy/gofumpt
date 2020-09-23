@@ -4,10 +4,10 @@ This is a version of the standard gofumpt package with slightly changed
 behaviour:
 
 * Don't change var x=y to x:=y
-* In gofumports don't destroy the import ordering into 3 groups that was done previously.
+* In gofumports a bug existed where imports were first ordered into 3 groups and then back into 2. This has been fixed to maintain the original 3 groups (system, local, external)
 
-
-	GO111MODULE=on go get tnmurphy/gofumpt
+## Fetching Gofumpt
+GO111MODULE=on go get github.com/tnmurphy/gofumpt
 
 Enforce a stricter format than `gofmt`, while being backwards compatible. That
 is, `gofumpt` is happy with a subset of the formats that `gofmt` is happy with.
@@ -17,7 +17,7 @@ replacement. Running `gofmt` after `gofumpt` should be a no-op.
 
 A drop-in replacement for `goimports` is also available:
 
-	GO111MODULE=on go get mvdan.cc/gofumpt/gofumports
+	GO111MODULE=on go get github.com/tnmurphy/gofumpt/gofumports
 
 Most of the Go source files in this repository belong to gofmt and goimports.
 The added formatting rules are in the `format` package.
@@ -236,21 +236,6 @@ func Foo(bar string, baz string) {}
 
 ```
 func Foo(bar, baz string) {}
-```
-
-</details>
-
-
-Simple var-declaration statements should use short assignments
-
-<details><summary>example</summary>
-
-```
-var s = "somestring"
-```
-
-```
-s := "somestring"
 ```
 
 </details>
