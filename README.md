@@ -1,8 +1,13 @@
-# gofumpt
+# gofumpt (adapted)
 
-`gofmt`, the way it should be pronounced.
+This is a version of the standard gofumpt package with slightly changed 
+behaviour:
 
-	GO111MODULE=on go get mvdan.cc/gofumpt
+* Don't change var x=y to x:=y
+* In gofumports don't destroy the import ordering into 3 groups that was done previously.
+
+
+	GO111MODULE=on go get tnmurphy/gofumpt
 
 Enforce a stricter format than `gofmt`, while being backwards compatible. That
 is, `gofumpt` is happy with a subset of the formats that `gofmt` is happy with.
