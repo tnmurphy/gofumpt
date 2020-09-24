@@ -11,3 +11,5 @@ require (
 )
 
 replace mvdan.cc/gofumpt => ./
+
+replace mvdan.cc/gofumpt/gofumports => ./gofumports
